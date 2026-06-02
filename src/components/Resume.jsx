@@ -104,7 +104,7 @@ export function Resume({ data, rawPhotoUrls, apiStatus, durationMs, elementId })
           <hr className="resume-divider" />
 
           {/* Professional Summary Section */}
-          <div style={{ marginBottom: '16px' }}>
+          <div style={{ marginBottom: '8px' }}>
             <h2 className="section-title">
               <User size={15} style={{ color: 'var(--accent-indigo)' }} />
               Artist Profile
@@ -115,7 +115,7 @@ export function Resume({ data, rawPhotoUrls, apiStatus, durationMs, elementId })
           <hr className="resume-divider" />
 
           {/* Core Skills & Expertise Section */}
-          <div style={{ marginBottom: '16px' }}>
+          <div style={{ marginBottom: '8px' }}>
             <h2 className="section-title">
               <Briefcase size={15} style={{ color: 'var(--accent-indigo)' }} />
               Special Skills
@@ -216,7 +216,7 @@ export function Resume({ data, rawPhotoUrls, apiStatus, durationMs, elementId })
           <hr className="resume-divider" />
 
           {/* Social Presence Section */}
-          <div style={{ marginBottom: '20px' }}>
+          <div style={{ marginBottom: '10px' }}>
             <h2 className="section-title">
               <Share2 size={15} style={{ color: 'var(--accent-indigo)' }} />
               Social Media Presence

@@ -293,9 +293,9 @@ body {
 .resume-header {
   display: grid;
   grid-template-columns: 140px 1fr;
-  gap: 32px;
+  gap: 20px;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 }
 
 .resume-header.no-photo {
@@ -319,6 +319,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top center;
 }
 
 .photo-placeholder {
@@ -360,7 +361,7 @@ body {
 .actor-meta-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px 16px;
+  gap: 4px 12px;
   font-size: 0.82rem;
 }
 
@@ -378,7 +379,7 @@ body {
 .resume-divider {
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--border-color) 10%, var(--border-color) 90%, transparent);
-  margin: 16px 0;
+  margin: 8px 0;
   border: none;
 }
 
@@ -390,7 +391,7 @@ body {
   color: var(--accent-indigo);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin-bottom: 10px;
+  margin-bottom: 4px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -399,7 +400,7 @@ body {
 /* About Block */
 .about-text {
   font-size: 0.85rem;
-  line-height: 1.55;
+  line-height: 1.4;
   color: var(--text-secondary);
 }
 
@@ -407,8 +408,8 @@ body {
 .resume-columns {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
-  gap: 32px;
-  margin-bottom: 16px;
+  gap: 24px;
+  margin-bottom: 8px;
 }
 
 .work-list, .awards-list {
@@ -417,8 +418,8 @@ body {
 
 .work-item, .award-item {
   font-size: 0.82rem;
-  line-height: 1.45;
-  margin-bottom: 10px;
+  line-height: 1.35;
+  margin-bottom: 5px;
   color: var(--text-secondary);
 }
 
@@ -436,14 +437,14 @@ body {
 .social-row-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  gap: 12px;
 }
 
 .social-pill {
   background: rgba(255, 255, 255, 0.015);
   border: 1px solid var(--border-color);
   border-radius: 6px;
-  padding: 10px;
+  padding: 6px 10px;
   display: flex;
   flex-direction: column;
   transition: var(--transition-smooth);
@@ -487,7 +488,7 @@ body {
   font-size: 0.7rem;
   color: var(--text-muted);
   border-top: 1px solid var(--border-color);
-  padding-top: 16px;
+  padding-top: 10px;
 }
 
 .sources-list {

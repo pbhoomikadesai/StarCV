@@ -30,7 +30,7 @@ export function SourcesBar({ apiStatus, durationMs, urls, social }) {
   });
 
   return (
-    <div className="resume-footer" style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'stretch' }}>
+    <div className="resume-footer" style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'stretch' }}>
       <div className="sources-list" style={{ display: 'flex', justifyContent: 'flex-start', gap: '24px', width: '100%', flexWrap: 'wrap' }}>
         <span style={{ fontWeight: 600, color: 'var(--text-secondary)' }}>Sources:</span>
         {activeSources.map(source => {
@@ -62,7 +62,7 @@ export function SourcesBar({ apiStatus, durationMs, urls, social }) {
           return <React.Fragment key={source.key}>{Badge}</React.Fragment>;
         })}
       </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.68rem', color: 'var(--text-muted)', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '8px', marginTop: '4px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.68rem', color: 'var(--text-muted)', borderTop: '1px solid var(--border-color)', paddingTop: '6px', marginTop: '2px' }}>
         <span>Powered by Tavily</span>
         <span>Generated: {formattedTime}s</span>
       </div>
