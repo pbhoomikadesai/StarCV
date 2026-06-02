@@ -128,11 +128,11 @@ function App() {
 
       {/* Error state */}
       {error && (
-        <div style={{ maxWidth: '600px', margin: '0 auto 2rem', padding: '1.5rem', borderRadius: '12px', border: '1px solid rgba(239, 68, 68, 0.2)', backgroundColor: 'rgba(239, 68, 68, 0.05)', display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+        <div style={{ maxWidth: '600px', margin: '0 auto 2rem', padding: '1.5rem', borderRadius: '12px', border: '1px solid rgba(239, 68, 68, 0.2)', backgroundColor: 'rgba(239, 68, 68, 0.05)', display: 'flex', alignItems: 'flex-start', gap: '1rem', boxSizing: 'border-box' }}>
           <AlertTriangle size={24} style={{ color: '#ef4444', flexShrink: 0, marginTop: '2px' }} />
-          <div>
+          <div style={{ minWidth: 0, flex: 1 }}>
             <h3 style={{ color: '#f8fafc', fontWeight: 600, fontSize: '1.05rem', marginBottom: '4px' }}>Generation Failed</h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: '1.4' }}>{error}</p>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: '1.4', wordBreak: 'break-word', overflowWrap: 'break-word' }}>{error}</p>
             <button 
               onClick={() => handleSearch(currentActor)} 
               className="btn btn-primary" 
