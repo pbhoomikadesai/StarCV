@@ -6,7 +6,36 @@ The application features a sleek, editorial aesthetic, supporting persistent **L
 
 ---
 
-## 🌟 Key Features
+## System Architecture
+
+```mermaid
+graph TD
+    User([User]) -->|Input Actor Name| Client[React Client]
+    Client -->|1. Trigger Search| Orch[Orchestrator Agent]
+    
+    subgraph Parallel Retrieval [Parallel Retrieval Layer]
+        Orch -->|API Request| Wiki[Wikipedia Agent]
+        Orch -->|API Request| YT[YouTube Agent]
+        Orch -->|API Request| IG[Instagram Search]
+        Orch -->|API Request| FB[Facebook Search]
+        Orch -->|API Request| LI[LinkedIn Search]
+    end
+    
+    Wiki -->|Raw Biography & Image| Agg[Aggregated Raw Text]
+    YT -->|Channel & Subscribers| Agg
+    IG -->|Follower Metrics| Agg
+    FB -->|Page Likes| Agg
+    LI -->|Headline Profile| Agg
+    
+    Agg -->|2. Raw Aggregate Payload| Groq[Groq Llama 3.3 70B Client]
+    Groq -->|3. Strict Structured JSON| Client
+    Client -->|Render CV Layout| UI[Premium A4 UI Sheet]
+    Client -->|Generate PDF| PDF[Downloadable A4 PDF]
+```
+
+---
+
+## Key Features
 
 * **Concurrently Aggregated Profiles**: Queries **Wikipedia, YouTube, Instagram, Facebook, and LinkedIn** simultaneously, building complete CV aggregates in **under 5 seconds**.
 * **Llama-Powered Schema Synthesis**: Uses Groq Llama 3.3 70B to parse raw data, cleaning out corporate resume jargon in favor of industry-appropriate terms (*Artist Profile*, *Selected Filmography*, *Special Skills*, *Awards & Accolades*).
@@ -18,7 +47,7 @@ The application features a sleek, editorial aesthetic, supporting persistent **L
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 * **Frontend**: React.js, Vite
 * **Styling**: Pure CSS3 Custom Theme System (Warm Obsidian/Gold & Ivory/Bronze)
@@ -33,10 +62,10 @@ The application features a sleek, editorial aesthetic, supporting persistent **L
 
 ---
 
-## 🚀 Local Quick Start
+## Local Quick Start
 
 ### 1. Configure Environment Keys
-Create a `.env` file in the root directory (based on `.env.example` or your local settings) and supply your API keys:
+Create a `.env` file in the root directory and supply your API keys:
 
 ```env
 # Groq API Key (https://console.groq.com)
@@ -49,7 +78,7 @@ VITE_TAVILY_API_KEY=your_tavily_api_key_here
 VITE_YOUTUBE_API_KEY=your_youtube_api_key_here
 ```
 
-> ⚠️ **Security Warning**: The `.env` file is excluded from git tracking in `.gitignore` to prevent credentials from being leaked to public repositories.
+> Security Warning: The `.env` file is excluded from git tracking in `.gitignore` to prevent credentials from being leaked to repositories.
 
 ### 2. Install Dependencies
 ```bash
@@ -64,36 +93,5 @@ Open [http://localhost:5173/](http://localhost:5173/) in your web browser.
 
 ---
 
-## 📂 Project Architecture
-
-```
-StarCV/
-├── src/
-│   ├── agents/
-│   │   ├── orchestrator.js      # Concurrently executes agents and builds payload
-│   │   ├── wikipediaAgent.js    # Extracts bio data and primary image
-│   │   ├── youtubeAgent.js      # Gathers channel details and subscriber stats
-│   │   └── tavilyAgent.js       # Resolves social media urls
-│   ├── components/
-│   │   ├── Resume.jsx           # Stitched A4 template sheet
-│   │   ├── SearchBar.jsx        # Autocomplete search bar
-│   │   ├── PhotoBlock.jsx       # Canvas-safe profile photos
-│   │   ├── SocialBlock.jsx      # Social metrics grid (custom brand SVGs)
-│   │   └── SourcesBar.jsx       # Footnote source list and timing logger
-│   ├── constants/
-│   │   ├── prompt.js            # Refined LLM resume generation schema
-│   │   └── actors.js            # Seeded popular Indian actors suggestions database
-│   ├── utils/
-│   │   ├── groqFormatter.js     # Groq API client with 8-second timeout abort
-│   │   ├── pdfExporter.js       # Canvas capture A4 PDF exporter
-│   │   └── fallbacks.js         # Names initials and values formatters
-│   ├── index.css                # Premium double-theme design system
-│   └── main.jsx                 # Entry point
-├── vite.config.js               # Dev server CORS proxy configuration
-└── package.json
-```
-
----
-
-## 📄 License
+## License
 This project is open-source and available under the [MIT License](LICENSE).
