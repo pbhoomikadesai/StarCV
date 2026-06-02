@@ -16,9 +16,10 @@ graph TD
     subgraph Parallel Retrieval [Parallel Retrieval Layer]
         Orch -->|API Request| Wiki[Wikipedia Agent]
         Orch -->|API Request| YT[YouTube Agent]
-        Orch -->|API Request| IG[Instagram Search]
-        Orch -->|API Request| FB[Facebook Search]
-        Orch -->|API Request| LI[LinkedIn Search]
+        Orch -->|Tavily API Request| Tavily[Tavily Search Router]
+        Tavily -->|Scrape IG| IG[Instagram Search]
+        Tavily -->|Scrape FB| FB[Facebook Search]
+        Tavily -->|Scrape LI| LI[LinkedIn Search]
     end
     
     Wiki -->|Raw Biography & Image| Agg[Aggregated Raw Text]
@@ -37,7 +38,7 @@ graph TD
 
 ## Key Features
 
-* **Concurrently Aggregated Profiles**: Queries **Wikipedia, YouTube, Instagram, Facebook, and LinkedIn** simultaneously, building complete CV aggregates in **under 5 seconds**.
+* **Concurrently Aggregated Profiles**: Queries **Wikipedia, YouTube, Instagram, Facebook, and LinkedIn** simultaneously via Tavily & Google APIs, building complete CV aggregates in **under 5 seconds**.
 * **Llama-Powered Schema Synthesis**: Uses Groq Llama 3.3 70B to parse raw data, cleaning out corporate resume jargon in favor of industry-appropriate terms (*Artist Profile*, *Selected Filmography*, *Special Skills*, *Awards & Accolades*).
 * **Double-Theme Premium Design**:
   * **Dark Mode**: A luxurious, warm Obsidian and Matte Gold carbon design with glassmorphic elements.
@@ -51,12 +52,10 @@ graph TD
 
 * **Frontend**: React.js, Vite
 * **Styling**: Pure CSS3 Custom Theme System (Warm Obsidian/Gold & Ivory/Bronze)
-* **Data Sources (5 Platforms)**:
-  * **Wikipedia**: Biographical profiling, credits, and portrait image extraction.
-  * **YouTube**: Subscriber stats and official channel verification.
-  * **Instagram**: Follower counts and official handle matching.
-  * **Facebook**: Page likes and fan presence metrics.
-  * **LinkedIn**: Professional profiles and executive bios.
+* **Search Routing & APIs**:
+  * **Tavily Search API**: Co-ordinates and routes query agents to scrape Instagram, Facebook, and LinkedIn profiles in parallel.
+  * **Wikipedia Open API**: Sourced for biographical context and fallback images.
+  * **YouTube Data API v3**: Sourced for active videos and subscriber counts.
 * **LLM Engine**: Groq Cloud API (`llama-3.3-70b-versatile`)
 * **PDF Engine**: `html2canvas` & `jspdf`
 
