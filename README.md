@@ -1,6 +1,6 @@
 # StarCV
 
-StarCV is a premium, high-fidelity portfolio and resume compiler tailored for the Indian film industry. By executing concurrent search agents across Wikipedia, YouTube, and Tavily, StarCV aggregates biographical details, social presence metrics, and film credits in parallel, then synthesizes them using **Groq (Llama 3.3 70B)** into a print-ready, single-page A4 CV.
+StarCV is a premium, high-fidelity portfolio and resume compiler tailored for the Indian film industry. By executing concurrent search agents across **Wikipedia, YouTube, Instagram, Facebook, and LinkedIn**, StarCV aggregates biographical details, social presence metrics, and film credits in parallel, then synthesizes them using **Groq (Llama 3.3 70B)** into a print-ready, single-page A4 CV.
 
 The application features a sleek, editorial aesthetic, supporting persistent **Light & Dark Themes** and high-resolution **A4 PDF Exporting**.
 
@@ -8,7 +8,7 @@ The application features a sleek, editorial aesthetic, supporting persistent **L
 
 ## 🌟 Key Features
 
-* **Concurrently Aggregated Profiles**: Queries Wikipedia, YouTube channels, and Tavily Search APIs simultaneously, building complete CV aggregates in **under 5 seconds**.
+* **Concurrently Aggregated Profiles**: Queries **Wikipedia, YouTube, Instagram, Facebook, and LinkedIn** simultaneously, building complete CV aggregates in **under 5 seconds**.
 * **Llama-Powered Schema Synthesis**: Uses Groq Llama 3.3 70B to parse raw data, cleaning out corporate resume jargon in favor of industry-appropriate terms (*Artist Profile*, *Selected Filmography*, *Special Skills*, *Awards & Accolades*).
 * **Double-Theme Premium Design**:
   * **Dark Mode**: A luxurious, warm Obsidian and Matte Gold carbon design with glassmorphic elements.
@@ -22,10 +22,12 @@ The application features a sleek, editorial aesthetic, supporting persistent **L
 
 * **Frontend**: React.js, Vite
 * **Styling**: Pure CSS3 Custom Theme System (Warm Obsidian/Gold & Ivory/Bronze)
-* **Backend Integration**: 
-  * Wikipedia Open API
-  * YouTube Data API v3
-  * Tavily Search API
+* **Data Sources (5 Platforms)**:
+  * **Wikipedia**: Biographical profiling, credits, and portrait image extraction.
+  * **YouTube**: Subscriber stats and official channel verification.
+  * **Instagram**: Follower counts and official handle matching.
+  * **Facebook**: Page likes and fan presence metrics.
+  * **LinkedIn**: Professional profiles and executive bios.
 * **LLM Engine**: Groq Cloud API (`llama-3.3-70b-versatile`)
 * **PDF Engine**: `html2canvas` & `jspdf`
 
