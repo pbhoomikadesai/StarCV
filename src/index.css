@@ -282,7 +282,8 @@ body {
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 20px;
   box-shadow: var(--shadow-card);
   position: relative;
   font-family: var(--font-sans);
