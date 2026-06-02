@@ -26,7 +26,7 @@ export function Resume({ data, rawPhotoUrls, apiStatus, durationMs, elementId })
   return (
     <div className="resume-scale-outer">
       <div className="resume-wrapper" id={elementId}>
-        <div>
+        <div style={{ display: 'flex', flexDirection: 'column', height: 'auto', flexGrow: 0 }}>
           {/* Resume Header Section */}
           <div className="resume-header">
             <div className="photo-container">
