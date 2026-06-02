@@ -14,7 +14,6 @@ The application features a sleek, editorial aesthetic, supporting persistent **L
   * **Dark Mode**: A luxurious, warm Obsidian and Matte Gold carbon design with glassmorphic elements.
   * **Light Mode**: A clean, print-perfect Ivory and Matte Bronze layout ideal for physical casting submissions.
 * **Seeded Autocomplete**: A curated autocomplete search bar matching popular actors across Indian film industries for instant lookup.
-* **Interactive Profile Photo Toggle**: Instantly hide profile pictures to dynamically expand the CV layout to a full-width text column on the fly.
 * **Tainted-Canvas Safe PDF Export**: Configured with canvas cross-origin fallbacks to download crisp, high-resolution A4 PDFs without security breaks.
 
 ---
