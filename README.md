@@ -1,5 +1,7 @@
 # StarCV
 
+### Live Demo: [https://star-cv-txoq.vercel.app](https://star-cv-txoq.vercel.app)
+
 StarCV is a premium, high-fidelity portfolio and resume compiler tailored for the Indian film industry. By executing concurrent search agents across **Wikipedia, YouTube, Instagram, Facebook, and LinkedIn**, StarCV aggregates biographical details, social presence metrics, and film credits in parallel, then synthesizes them using **Groq (Llama 3.3 70B)** into a print-ready, single-page A4 CV.
 
 The application features a sleek, editorial aesthetic, supporting persistent **Light & Dark Themes** and high-resolution **A4 PDF Exporting**.
