@@ -57,3 +57,7 @@ export async function fetchFacebookData(actorName) {
 export async function fetchLinkedInData(actorName) {
   return searchTavily(`${actorName} LinkedIn profile headline`);
 }
+
+export async function fetchCareerDetails(actorName) {
+  return searchTavily(`${actorName} list of top movies filmography awards accolades career highlights`);
+}

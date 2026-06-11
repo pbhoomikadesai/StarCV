@@ -38,7 +38,7 @@ export async function fetchWikipediaData(actorName) {
       title: page.title,
       bio,
       photoUrl,
-      raw: `Wikipedia Title: ${page.title}\nIntro Extract: ${bio.slice(0, 1500)}`
+      raw: `Wikipedia Title: ${page.title}\nIntro Extract: ${bio.slice(0, 4000)}`
     };
   } catch (error) {
     console.error('Wikipedia Agent Error:', error);
