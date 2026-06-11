@@ -19,7 +19,7 @@ export async function fetchWikipediaData(actorName) {
     const pageTitle = titles[0];
     
     // 2. Fetch the introductory section and page image thumbnail
-    const queryUrl = `https://en.wikipedia.org/w/api.php?action=query&prop=extracts|pageimages&exintro&explaintext&titles=${encodeURIComponent(pageTitle)}&pithumbsize=600&format=json&origin=*`;
+    const queryUrl = `https://en.wikipedia.org/w/api.php?action=query&prop=extracts|pageimages&exintro&explaintext&titles=${encodeURIComponent(pageTitle)}&pithumbsize=600&format=json&origin=*&redirects=1`;
     const queryResponse = await fetch(queryUrl);
     if (!queryResponse.ok) throw new Error('Wikipedia query failed');
     const queryData = await queryResponse.json();
