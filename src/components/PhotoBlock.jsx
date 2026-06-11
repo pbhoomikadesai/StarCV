@@ -7,14 +7,25 @@ export function PhotoBlock({ photoUrl, fallbackUrl, fullName }) {
 
   useEffect(() => {
     // Reset state whenever inputs change
-    setImgSrc(photoUrl || fallbackUrl || null);
+    let url = photoUrl || fallbackUrl || null;
+    if (url && typeof url === 'string' && url.includes('upload.wikimedia.org')) {
+      const separator = url.includes('?') ? '&' : '?';
+      url = `${url}${separator}origin=*`;
+    }
+    setImgSrc(url);
     setHasFailed(false);
   }, [photoUrl, fallbackUrl]);
 
   const handleImageError = () => {
-    // If the primary image (usually TMDb) failed, attempt the Wikipedia fallback image
-    if (imgSrc === photoUrl && fallbackUrl && photoUrl !== fallbackUrl) {
-      setImgSrc(fallbackUrl);
+    // If the primary image failed and we have a fallback, switch to the fallback (with CORS parameter)
+    let fallbackWithCORS = fallbackUrl;
+    if (fallbackWithCORS && typeof fallbackWithCORS === 'string' && fallbackWithCORS.includes('upload.wikimedia.org')) {
+      const separator = fallbackWithCORS.includes('?') ? '&' : '?';
+      fallbackWithCORS = `${fallbackWithCORS}${separator}origin=*`;
+    }
+
+    if (imgSrc !== fallbackWithCORS && fallbackWithCORS) {
+      setImgSrc(fallbackWithCORS);
     } else {
       // If the fallback also fails, render initials avatar
       setHasFailed(true);
