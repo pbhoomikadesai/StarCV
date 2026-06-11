@@ -117,6 +117,8 @@ export const POPULAR_ACTORS = [
   "Sushant Singh Rajput",
   "Tabu",
   "Taapsee Pannu",
+  "Tara Anuradha",
+  "Tara Sutaria",
   "Tiger Shroff",
   "Tovino Thomas",
   "Trisha Krishnan",
