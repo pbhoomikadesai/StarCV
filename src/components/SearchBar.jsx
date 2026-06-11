@@ -16,12 +16,40 @@ export function SearchBar({ onSearch, isLoading }) {
       return;
     }
 
-    // Filter actors based on user query
-    const filtered = POPULAR_ACTORS.filter(actor =>
+    // 1. Get local database matches immediately
+    const localMatches = POPULAR_ACTORS.filter(actor =>
       actor.toLowerCase().includes(trimmed.toLowerCase())
-    ).slice(0, 5);
+    );
 
-    setSuggestions(filtered);
+    setSuggestions(localMatches.slice(0, 5));
+
+    // 2. Query Wikipedia OpenSearch dynamically (debounced to avoid spamming API)
+    const delayDebounceId = setTimeout(async () => {
+      try {
+        const searchUrl = `https://en.wikipedia.org/w/api.php?action=opensearch&search=${encodeURIComponent(trimmed)}&limit=6&namespace=0&format=json&origin=*`;
+        const response = await fetch(searchUrl);
+        if (!response.ok) return;
+        const data = await response.json();
+        const wikiTitles = data[1] || [];
+
+        // Merge local matches and Wikipedia results (removing duplicates case-insensitively)
+        const combined = [...localMatches];
+        wikiTitles.forEach(title => {
+          // Filter out generic disambiguation lists if they contain words like "disambiguation"
+          if (title.toLowerCase().includes('disambiguation')) return;
+          
+          if (!combined.some(item => item.toLowerCase() === title.toLowerCase())) {
+            combined.push(title);
+          }
+        });
+
+        setSuggestions(combined.slice(0, 5));
+      } catch (err) {
+        console.error('Wikipedia opensearch failed:', err);
+      }
+    }, 300);
+
+    return () => clearTimeout(delayDebounceId);
   }, [query]);
 
   // Handle click outside suggestions container to close it
