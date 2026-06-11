@@ -2,7 +2,7 @@
  * Tavily API Agent
  * Queries Tavily Search API (via local Vite proxy) for Instagram, Facebook, and LinkedIn details.
  */
-async function searchTavily(query) {
+async function searchTavily(query, maxResults = 3) {
   const apiKey = import.meta.env.VITE_TAVILY_API_KEY;
 
   if (!apiKey || apiKey === 'your_tavily_api_key_here') {
@@ -20,7 +20,7 @@ async function searchTavily(query) {
         query: query,
         search_depth: 'basic',
         include_images: false,
-        max_results: 3
+        max_results: maxResults
       })
     });
 
@@ -59,5 +59,9 @@ export async function fetchLinkedInData(actorName) {
 }
 
 export async function fetchCareerDetails(actorName) {
-  return searchTavily(`${actorName} list of top movies filmography awards accolades career highlights`);
+  return searchTavily(`${actorName} list of top movies filmography awards accolades career highlights`, 5);
+}
+
+export async function fetchAwardsDetails(actorName) {
+  return searchTavily(`${actorName} list of awards and nominations filmfare national academy accolades received`, 4);
 }

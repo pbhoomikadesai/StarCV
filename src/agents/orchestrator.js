@@ -4,7 +4,7 @@
  */
 import { fetchWikipediaData } from './wikipediaAgent';
 import { fetchYouTubeData } from './youtubeAgent';
-import { fetchInstagramData, fetchFacebookData, fetchLinkedInData, fetchCareerDetails } from './tavilyAgent';
+import { fetchInstagramData, fetchFacebookData, fetchLinkedInData, fetchCareerDetails, fetchAwardsDetails } from './tavilyAgent';
 
 export async function runOrchestrator(actorName) {
   const startTime = performance.now();
@@ -16,7 +16,8 @@ export async function runOrchestrator(actorName) {
     instagram: fetchInstagramData(actorName),
     facebook: fetchFacebookData(actorName),
     linkedin: fetchLinkedInData(actorName),
-    career: fetchCareerDetails(actorName)
+    career: fetchCareerDetails(actorName),
+    awards: fetchAwardsDetails(actorName)
   };
 
   const keys = Object.keys(promises);
@@ -65,6 +66,9 @@ ${results.linkedin.raw || 'No LinkedIn data retrieved.'}
 
 [CAREER & ACCLAIM DETAILS]
 ${results.career.raw || 'No career details retrieved.'}
+
+[AWARDS & HONORS DETAILS]
+${results.awards.raw || 'No awards details retrieved.'}
 `.trim();
 
   return {
